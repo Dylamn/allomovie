@@ -6,7 +6,7 @@ function App () {
   return (
     <div className="App">
       <Header />
-      <div className="d-flex flex-row flex-fill pt-4 p-2">
+      <div className="flex flex-fill pt-4">
         <MovieList />
         <MovieDetails />
       </div>

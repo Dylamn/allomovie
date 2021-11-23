@@ -3,7 +3,7 @@ import React, { Component } from 'react'
 class MovieDetails extends Component {
   render () {
     return (
-      <section className="w-25 p-4 border border">
+      <section className="hidden sm:block sm:w-1/4 p-4 mr-2 border">
         Movie Details...
       </section>
     );

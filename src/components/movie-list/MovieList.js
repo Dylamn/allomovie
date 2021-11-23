@@ -5,7 +5,7 @@ import MovieElement from "./MovieElement";
 class MovieList extends Component {
   render () {
     return (
-      <main className="w-75 d-flex flex-row flex-wrap align-content-start">
+      <main className="w-full sm:w-3/4 flex flex-row flex-wrap content-start">
         <MovieElement/>
         <MovieElement/>
         <MovieElement/>
