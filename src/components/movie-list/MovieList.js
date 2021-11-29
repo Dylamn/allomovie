@@ -6,7 +6,7 @@ import MovieElement from "./movie-element/MovieElement";
 class MovieList extends Component {
   render () {
     return (
-      <main className="w-full sm:w-3/4 flex flex-row flex-wrap content-start">
+      <main className="w-full sm:w-3/4 flex flex-row flex-wrap justify-center">
         {this.props.movies.map((movie, i) => (
           <MovieElement key={i} {...movie} updateSelectedMovie={() => this.props.updateSelectedMovie(i)} />
         ))}

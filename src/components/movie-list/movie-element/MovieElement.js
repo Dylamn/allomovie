@@ -14,7 +14,7 @@ class MovieElement extends Component {
             {this.props.title}
           </h5>
           <hr className="w-full" />
-          <span className="py-2">{this.props.details}</span>
+          <span className="py-2 word-break">{this.props.details}</span>
         </div>
       </div>
     );
