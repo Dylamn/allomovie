@@ -1,12 +1,29 @@
+import { useRef } from "react";
+import { NavLink } from "react-router-dom";
+
 const Header = () => {
+  const navLinkStyle = "block mt-4 lg:inline-block lg:mt-0 font-bold text-gray-300 hover:text-black mr-6"
+  const linksDiv = useRef(null)
+
+  const toggleMenu = () => {
+    if (! linksDiv.current) {
+      return
+    }
+
+    linksDiv.current.classList.toggle('hidden')
+  }
+
   return (
     <header>
       <nav className="flex flex-wrap p-6 shadow-sm items-center justify-between">
-        <div className="flex text-dark mr-6"> {/* Brand Icon/Name */}
-          <a href="/" className="text-xl ml-4">AlloMovie</a>
+        <div className="flex text-dark mr-6">
+          <NavLink to="/films" className="text-xl flex-none md:justify-center">
+            <img src="/logo192.png" className="h-6 w-full" alt="Website icon" />
+          </NavLink>
         </div>
         <div className="block lg:hidden">
-          <button className="flex items-center px-3 py-2 border rounded text-gray-500 border-gray-600
+          <button onClick={toggleMenu}
+                  className="flex items-center px-3 py-2 border rounded text-gray-500 border-gray-600
                              hover:text-gray-300 hover:border-gray-400"
           >
             <svg className="fill-current h-3 w-3" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
@@ -21,9 +38,9 @@ const Header = () => {
         </div>
 
         <div className="w-full block flex-grow lg:flex lg:items-center lg:w-auto">
-          <div className="text-sm lg:flex-grow">
-            <a href="/" className="block mt-4 lg:inline-block lg:mt-0 text-gray-300 hover:text-black mr-6">Home</a>
-            <a href="/" className="block mt-4 lg:inline-block lg:mt-0 text-gray-300 hover:text-black mr-6">Favorites</a>
+          <div ref={linksDiv} className="hidden text-sm lg:flex-grow lg:block">
+            <NavLink to="/films" className={navLinkStyle}>Home</NavLink>
+            <NavLink to="/favorites" className={navLinkStyle}>Favorites</NavLink>
           </div>
         </div>
       </nav>
