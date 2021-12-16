@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 
 import Style from './FavoriteElement.module.scss'
 
-const FavoriteElement = ({favorite: {title, img, details}, removeFavorite}) => {
+const FavoriteElement = ({favorite: {id, title, img, details}, tryRemoveFavorite}) => {
   return (
     <div className={`${Style.container} w-full flex flex-auto flex-row bg-gray-100`}>
       <img width="150" height="200px" src={img} alt={`${title} Poster`} />
@@ -16,7 +16,7 @@ const FavoriteElement = ({favorite: {title, img, details}, removeFavorite}) => {
           {details}
         </p>
         <div className="flex flex-row justify-end">
-          <button onClick={() => removeFavorite(title)} className="rounded px-3 py-2 text-white bg-red-600">
+          <button onClick={() => tryRemoveFavorite(id)} className="rounded px-3 py-2 text-white bg-red-600">
             Remove
           </button>
         </div>
@@ -27,12 +27,13 @@ const FavoriteElement = ({favorite: {title, img, details}, removeFavorite}) => {
 
 FavoriteElement.propTypes = {
   favorite: PropTypes.shape({
+    id: PropTypes.number.isRequired,
     title: PropTypes.string.isRequired,
     img: PropTypes.string.isRequired,
     details: PropTypes.string,
     description: PropTypes.string,
   }),
-  removeFavorite: PropTypes.func.isRequired
+  tryRemoveFavorite: PropTypes.func.isRequired
 }
 
 export default FavoriteElement

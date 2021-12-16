@@ -9,7 +9,7 @@ const NotFound = () => (
         The page you are looking for might have been removed,
         had its name changed or is temporarily unavailable.
       </p>
-      <Link to="/films">
+      <Link to="/movies">
         <button className="transition duration-500 ease-in-out
                            rounded-full px-6 py-3 bg-blue-500 text-white hover:bg-blue-700">
           Go to homepage

@@ -17,7 +17,7 @@ const Header = () => {
     <header>
       <nav className="flex flex-wrap p-6 shadow-sm items-center justify-between">
         <div className="flex text-dark mr-6">
-          <NavLink to="/films" className="text-xl flex-none md:justify-center">
+          <NavLink to="/movies" className="text-xl flex-none md:justify-center">
             <img src="/logo192.png" className="h-6 w-full" alt="Website icon" />
           </NavLink>
         </div>
@@ -39,7 +39,7 @@ const Header = () => {
 
         <div className="w-full block flex-grow lg:flex lg:items-center lg:w-auto">
           <div ref={linksDiv} className="hidden text-sm lg:flex-grow lg:block">
-            <NavLink to="/films" className={navLinkStyle}>Home</NavLink>
+            <NavLink to="/movies" className={navLinkStyle}>Home</NavLink>
             <NavLink to="/favorites" className={navLinkStyle}>Favorites</NavLink>
           </div>
         </div>

@@ -1,21 +1,35 @@
 import axios from "axios";
 
-const apiMovie = axios.create({
+export const movieClient = axios.create({
   baseURL: 'https://api.themoviedb.org/4',
 })
 
-apiMovie.interceptors.request.use(request => {
+movieClient.interceptors.request.use(request => {
   request.headers['Authorization'] = `Bearer ${process.env.REACT_APP_TMDB_API_KEY}`
 
   return request
 })
 
-export default apiMovie
-
-export const apiMovieMap = (m) => {
+export const apiMovieMap = (movie) => {
   return {
-    img: `https://image.tmdb.org/t/p/w500/${m.poster_path}`,
-    title: m.title,
-    description: m.overview,
-    details: `${m.release_date} | ${m.vote_average}/10 (${m.vote_count} votes)`
-}}
+    id: movie.id,
+    img: `https://image.tmdb.org/t/p/w500/${movie.poster_path}`,
+    title: movie.title,
+    description: movie.overview,
+    details: `${movie.release_date} | ${movie.vote_average}/10 (${movie.vote_count} votes)`
+  }
+}
+
+
+const apiMovie = {
+  discoverMovies: () => (
+    movieClient.get('discover/movie')
+      .then(response => response.data.results.map(apiMovieMap))
+  ),
+  searchMovies: (filters) => (
+    movieClient.get('search/movie', {params: filters})
+      .then(response => response.data.results.map(apiMovieMap))
+  ),
+}
+
+export default apiMovie

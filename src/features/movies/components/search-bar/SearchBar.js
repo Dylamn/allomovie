@@ -2,8 +2,6 @@ import React, { Component } from "react";
 import { Formik } from "formik";
 import * as Yup from 'yup'
 
-import apiMovie, { apiMovieMap } from "../../../../conf/api.movie";
-
 class SearchBar extends Component {
 
   validationSchema = Yup.object().shape({
@@ -11,15 +9,9 @@ class SearchBar extends Component {
   })
 
   submit = (values, actions) => {
-    apiMovie.get('/search/movie', {params: values})
-      .then(response => response.data.results)
-      .then(results => {
-        this.props.updateMovies(results.map(apiMovieMap))
-      })
-      .catch(err => {
-        console.error(err)
-      })
-      .finally(() => actions.setSubmitting(false))
+    this.props.fetchMovies(values).then(
+      () => actions.setSubmitting(false)
+    )
   }
 
   render () {
